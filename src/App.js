@@ -9,6 +9,8 @@ import {
 import { Navbar } from './app/Navbar'
 import { PostsList } from './features/post/PostList'
 import { AddPostForm } from './features/post/AddPostForm'
+import { SinglePostPage } from './features/post/SinglePostPage'
+import { EditPostForm } from './features/post/EditPostForm'
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
               </React.Fragment>
             )}
           />
+          <Route exact path="/posts/:postId" component={SinglePostPage} />
+          <Route exact path="/editPost/:postId" component={EditPostForm} />
           <Redirect to="/" />
         </Switch>
       </div>
