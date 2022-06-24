@@ -30,4 +30,4 @@ export const SinglePostPage = ({ match }) => {
       </article>
     </section>
   )
-}
+} 
