@@ -1,10 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { numberClicked } from './numberSlice'
 
 export default function NumberPad() {
+  const dispatch = useDispatch()
+  const fetchNumber = (i)=>()=>
+   dispatch(numberClicked(i))
   let numberArr = []
   for (let i = 0; i <= 9; i++) {
     numberArr.push(
-      <button className="button normal" key={i}>
+      <button className="button normal" onClick={fetchNumber(i)} key={i} id={i}>
         {i}
       </button>
     )

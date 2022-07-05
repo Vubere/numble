@@ -2,12 +2,12 @@ import React from "react";
 
 export default function Navbar(){
   return(
-    <nav>     
+    <header>     
       <div>ham</div>
       <div>hel</div>
-      <h1>Numble</h1>
+      <div className="heading">Numble</div>
       <div>stat</div>
       <div>sett</div>
-    </nav>
+    </header>
   )
 }
