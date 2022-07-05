@@ -18,8 +18,8 @@ export default function InputArea(){
     inputArea.push(<InputRow key={i}/>)
   }
   return(
-    <main>
+    <div className="inputArea">
      {inputArea}
-    </main>
+    </div>
   )
 }

@@ -6,17 +6,21 @@ import Statistics from './components/Statistics'
 import Help from './components/Help'
 import Settings from './components/Settings'
 import Menu from './components/Menu'
+import Main from './components/Main.'
 
-export default function App(){
-  return(
+export default function App() {
+  return (
     <>
-      <Navbar/>
-      <Statistics/>
-      <Menu/>
-      <Help/>
-      <Settings/>
-      <InputArea/>
-      <NumberPad/>
+      <Navbar>
+        <Statistics />
+        <Menu />
+        <Help />
+        <Settings />
+      </Navbar>
+      <Main>
+        <InputArea />
+        <NumberPad />
+      </Main>
     </>
   )
 }

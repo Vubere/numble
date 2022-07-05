@@ -8,8 +8,8 @@
 }
 
 body {
-  display: block;
-  margin-bottom: 20px;
+  display: grid;
+  grid-template-rows: 70px calc(100vh-70px);
   min-height: 100vh;
   font-family: 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -41,18 +41,26 @@ h1, h2, h3{
 
 /*main*/
 main{
+  width: 100vw;
+  display: grid;
+  margin: 5px;
+  grid-gap: 0px;
+  grid-template-rows: 65% 35%;
+  place-items: center;
+}
+/*input area*/
+.inputArea{
   display: flex;
   align-items: center;
   width: 100%;
+  max-width: 600px;
+  height: 65vh;
   flex-direction: column;
 }
-/*input area*/
 .inputRow{
   width: 95%;
   min-width: 350px;
-  max-width: 500px;
   min-height: 70px;
-  max-height: 500px;
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   grid-template-rows: auto;
@@ -60,29 +68,27 @@ main{
 .inputDiv{
   font-size: 3em;
   margin: 2px;
-  max-width: 100px;
-  max-height: 100px;
   padding: 6px;
   border: 2px solid rgba(236, 247, 247, 0.089);
   background-color: rgba(236, 247, 247, 0.089);
+  height: 9.1vh;
 }
 
 /*Number Pad*/
 .buttonContainer{
   display: grid;
   width: 100%;
+  max-width: 600px;
+  min-width: 350px;
+  min-height: 70px;
   justify-content: center;
   grid-template-rows: auto auto auto;
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-gap: 2px;
-  position: fixed;
-  max-width: 500px;
-  bottom: 0;
 }
 .button{
   outline: 0;
   border: 0;
-  height: 40px;
 }
 .button:hover{
   background-color: inherit;
@@ -96,6 +102,9 @@ main{
 footer{
   display: flex;
   justify-content: center;
+  margin: 0;
+  width: 100%;
+  height: 100%;
 }
 /*spinner*/
 .spinner {
