@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import numberSlice from '../components/mainComponents/numberSlice'
 import inputSlice from '../components/mainComponents/inputSlice'
-import columnRowCounterSlice from '../components/mainComponents/columnRowCounterSlice'
+import columnRowCounterSlice from '../components/mainComponents/features/columnRowCounterSlice'
 
 export default configureStore({
   reducer: {

@@ -5,7 +5,8 @@ const columnRowCounter = createSlice({
   initialState:{
     currentRow: 0,
     currentColumn: 0,
-    blocksAreFull: false
+    blocksAreFull: false,
+    rowIsFull: false
   },
   reducers:{
     countColumnsRow(state){
@@ -14,6 +15,7 @@ const columnRowCounter = createSlice({
           state.currentRow = 0
           state.blocksAreFull = !state.blocksAreFull
         }else{
+          state.rowIsFull = !state.rowIsFull
           state.currentRow++
         }
         state.currentColumn=0

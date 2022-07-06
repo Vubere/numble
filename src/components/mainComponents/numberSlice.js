@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import randomFiveDigits from "./features/randomDigit";
 
 export const numberSlice = createSlice({
   name: 'fetchNumber',
   initialState: {
-    clickedNumber: null
+    clickedNumber: null,
+    generatedNumber: randomFiveDigits()
   },
   reducers: {
     numberClicked: (state, action)=> {
