@@ -1,11 +1,24 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector,  } from 'react-redux'
 import { numberClicked } from './numberSlice'
+import { updateBlockValue } from './inputSlice'
+import { countColumnsRow } from './columnRowCounterSlice'
 
 export default function NumberPad() {
   const dispatch = useDispatch()
-  const fetchNumber = (i)=>()=>
-   dispatch(numberClicked(i))
+  const colRow = useSelector(state=>state.columnRowCounter)
+
+  const fetchNumber = (i)=>()=>{
+    if(colRow.blocksAreFull) return
+    dispatch(numberClicked(i))
+    dispatch(updateBlockValue({
+      row: colRow.currentRow, 
+      column:colRow.currentColumn, 
+      value:i
+    }))
+    dispatch(countColumnsRow())
+    console.log(i)
+  }
   let numberArr = []
   for (let i = 0; i <= 9; i++) {
     numberArr.push(
