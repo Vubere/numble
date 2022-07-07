@@ -1,26 +1,40 @@
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
 
-
-function useValidateInput(num){
-  const generatedNumber = useSelector(state=>{
-    return state.numberFetch.generatedNumber
-    })
-  const colRow = useSelector(state =>state.columnRowCounter)
-  const inputArray = useSelector(state =>state.inputArray[colRow.currentRow])
-  let inputedNumber = 0
-  for(let i in inputArray){
-    if(Number(i)===4){
-      inputedNumber = Number(inputArray[i])
-      break
-    }
-    inputArray[i] = Number(inputArray[i]*10**(4-i))
-    inputedNumber+=inputArray[i]
-  }
-  return ({
-    isValueEqual: inputedNumber===num,
-    isValueGreater: inputedNumber>num,
-    isValueLesser: inputedNumber<num,
-    similarIndexes: [],
-    similarDigitsDIffIndex: []
+export function useValidateInput() {
+  const {generatedNumber, clickedNumberArray:inputArray } = useSelector((state) => {
+    return state.numberFetch
   })
+
+  let inputedNumber = Number(inputArray.join(''))
+
+  let genNumArr = generatedNumber.toString().split('')
+  let similarIndex = []
+  genNumArr.filter((val, i) => {
+    let bool = Number(val) === inputArray[i]
+    if (bool) {
+      similarIndex.push(i)
+    }
+    return bool
+  })
+  let similarDigits = {}
+  genNumArr.forEach((val,i)=>{
+    if(inputArray.includes(Number(val))){
+      let index = inputArray.indexOf(Number(val))
+      if(similarDigits[index]){
+        index = inputArray.lastIndexOf(Number(val))
+      }
+      if(i!==index){
+        console.log(index, i)
+        similarDigits[index] = Number(val)
+      }
+    }
+  })
+  console.log(similarDigits)
+  return {
+    isValueEqual: inputedNumber === generatedNumber,
+    isValueGreater: inputedNumber > generatedNumber,
+    isValueLesser: inputedNumber < generatedNumber,
+    similarIndexes: similarIndex,
+    similarDigitsDIffIndex: similarDigits,
+  }
 }

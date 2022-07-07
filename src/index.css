@@ -63,16 +63,27 @@ main{
   min-height: 50px;
   display: grid;
   grid-gap: 1.5px;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: 20% 20% 20% 20% 20%;
 }
 .inputDiv{
   font-size: 1.8em;
   place-items: center;
   text-align: center;
   margin: 2px;
-  padding: 6px;
   border: 2px solid rgba(236, 247, 247, 0.189);
   min-height: 50px;
+}
+.red{
+  border: 2px solid red;
+}
+.green{
+  border: 2px solid green;
+}
+.white{
+  border: 2px solid white;
+}
+.yellow{
+  border: 2px solid yellow;
 }
 
 /*Number Pad*/

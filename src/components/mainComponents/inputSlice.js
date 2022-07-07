@@ -4,54 +4,75 @@ const inputArraySlice = createSlice({
   name: "inputArray",
   initialState: {
     0:{
-      0: null,
-      1: null,
-      2: null,
-      3: null,
-      4: null
+      value:{
+        0: null,
+        1: null,
+        2: null,
+        3: null,
+        4: null
+      },
+      classes:["inputRow"]
     },
     1:{
-      0: null,
-      1: null,
-      2: null,
-      3: null,
-      4: null
+      value:{
+        0: null,
+        1: null,
+        2: null,
+        3: null,
+        4: null
+      },
+      classes:["inputRow"]
     },
     2:{
-      0: null,
-      1: null,
-      2: null,
-      3: null,
-      4: null
+      value:{
+        0: null,
+        1: null,
+        2: null,
+        3: null,
+        4: null
+      },
+      classes:["inputRow"]
     },
     3:{
-      0: null,
-      1: null,
-      2: null,
-      3: null,
-      4: null
+      value:{
+        0: null,
+        1: null,
+        2: null,
+        3: null,
+        4: null
+      },
+      classes:["inputRow"]
     },
     4:{
-      0: null,
-      1: null,
-      2: null,
-      3: null,
-      4: null
+      value:{
+        0: null,
+        1: null,
+        2: null,
+        3: null,
+        4: null
+      },
+      classes:["inputRow"]
     },
     5:{
-      0: null,
-      1: null,
-      2: null,
-      3: null,
-      4: null
+      value:{
+        0: null,
+        1: null,
+        2: null,
+        3: null,
+        4: null
+      },
+      classes:["inputRow"]
     },
   },
   reducers: {
     updateBlockValue(state, action){
-      state[action.payload.row][action.payload.column] = action.payload.value
+      state[action.payload.row].value[action.payload.column] = action.payload.value
+    },
+    updateClasses(state, action){
+      state[action.payload.row].classes = action.payload.value
     }
   }
 })
 
-export const {addBlock, updateBlockValue} = inputArraySlice.actions
+export const {addBlock, updateBlockValue, updateClasses} = inputArraySlice.actions
 export default inputArraySlice.reducer
