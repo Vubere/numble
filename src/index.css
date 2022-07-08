@@ -73,9 +73,7 @@ main{
   border: 2px solid rgba(236, 247, 247, 0.189);
   min-height: 50px;
 }
-.red{
-  border: 2px solid red;
-}
+
 .green{
   border: 2px solid green;
 }

@@ -1,17 +1,25 @@
 import React, { memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { numberClicked, submitClicked } from './numberSlice'
-import { updateBlockValue } from './inputSlice'
+import { updateBlockValue, updateClasses } from './inputSlice'
 import {
   countColumnsRow,
-  changeColumnIsFull,
+  goToNewRow,
   changeRowIsFull,
 } from './features/columnRowCounterSlice'
 
-export default memo(function NumberPad() {
+export default function NumberPad() {
   const dispatch = useDispatch()
   const colRow = useSelector((state) => state.columnRowCounter)
-
+  const {
+    validate: {
+      isValueEqual,
+      isValueGreater,
+      isValueLesser,
+      similarIndexes,
+      similarDigitsDiffIndex,
+    },
+  } = useSelector((state) => state.numberFetch)
   const fetchNumber = (i) => () => {
     if (colRow.blocksAreFull) return
     if (colRow.rowIsFull) return
@@ -25,6 +33,37 @@ export default memo(function NumberPad() {
     )
     dispatch(countColumnsRow())
   }
+  const enter = () => {
+    let curRow = colRow.currentRow
+    if (colRow.rowIsFull) {
+      dispatch(submitClicked())
+      if (isValueEqual) {
+        dispatch(
+          updateClasses({
+            row: curRow,
+            value: ['inputRow green'],
+          })
+        )
+      } else if (isValueGreater) {
+        dispatch(
+          updateClasses({
+            row: curRow,
+            value: ['inputRow yellow'],
+          })
+        )
+      } else if (isValueLesser) {
+        dispatch(
+          updateClasses({
+            row: curRow,
+            value: ['inputRow white'],
+          })
+        )
+      }
+      dispatch(changeRowIsFull())
+      dispatch(goToNewRow())
+    }
+  }
+  
   let numberArr = []
   for (let i = 0; i <= 9; i++) {
     numberArr.push(
@@ -39,12 +78,7 @@ export default memo(function NumberPad() {
         {numberArr}
         <button
           className="button normal enter"
-          onClick={() => {
-            if (colRow.rowIsFull) {
-              dispatch(submitClicked())
-              dispatch(changeRowIsFull())
-            }
-          }}
+          onClick={enter}
         >
           ENTER
         </button>
@@ -52,4 +86,4 @@ export default memo(function NumberPad() {
       </div>
     </footer>
   )
-})
+}

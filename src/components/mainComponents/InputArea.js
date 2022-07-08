@@ -1,27 +1,9 @@
-import React, {useLayoutEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateClasses } from './inputSlice'
 
-function InputRow({ classNames, idNum }) {
+function InputRow({ idNum }) {
   const inputArray = useSelector((state) => state.inputArray)
-  const dispatch = useDispatch()
-  
-  const { currentRow } = useSelector((state) => state.columnRowCounter)
-  const {
-    isValueEqual,
-    isValueGreater,
-    isValueLesser,
-    similarIndexes,
-    similarDigitsDIffIndex,
-  } = useSelector((state) => state.numberFetch.validate)
-  function decideClass(i) {
-    let classNames = isValueEqual
-      ? 'inputRow green'
-      : isValueGreater? 'inputRow yellow'
-      : isValueLesser? 'inputRow white'
-      : 'inputRow';
-    dispatch(updateClasses({ value: classNames, row: i }))
-  }
+  const colRow = useSelector(state=>state.columnRowCounter)
+
   const inputRowArr = []
   for (let i = 0; i < 5; i++) {
     inputRowArr.push(
@@ -30,15 +12,12 @@ function InputRow({ classNames, idNum }) {
       </div>
     )
   }
-  decideClass(idNum)
-  return <div className={}>{inputRowArr}</div>
-}
-export default function InputArea() {
-  const inputArray = useSelector((state) => state.inputArray)
-  const inputArea = []
-  
-  console.log()
 
+  return (<div className={inputArray[idNum].classes[0]}>{inputRowArr}</div>)
+}
+
+export default function InputArea() {
+  const inputArea = []
   for (let i = 0; i < 6; i++) {
     inputArea.push((
         <InputRow key={i} idNum={i}

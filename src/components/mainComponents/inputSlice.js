@@ -69,7 +69,11 @@ const inputArraySlice = createSlice({
       state[action.payload.row].value[action.payload.column] = action.payload.value
     },
     updateClasses(state, action){
+      console.log(action)
       state[action.payload.row].classes = action.payload.value
+    },
+    numberClassUpdate(state, action){
+      state[action.payload.id][action.payload.id] = action.payload.classUpdate
     }
   }
 })
