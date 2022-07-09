@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 
-export default function Help() {
-  const [open, setOpen] = useState(false)
+export default function Help({setHelpOpen}) {
   return (
     <>
-      {open&&<div className="help-container">
+      <div className="help-container">
         <div className="help">
           <h2>HOW TO PLAY</h2>
-          <span>x</span>
+          <span onClick={setHelpOpen}>x</span>
           <p>Guess the number in six tries.</p>
           <p>
             If your guess is lesser you get a red border. if it is greater you get
@@ -24,7 +23,6 @@ export default function Help() {
           </ul>
         </div>
       </div>
-      }
     </>
   )
 }

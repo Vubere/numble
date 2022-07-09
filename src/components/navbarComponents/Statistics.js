@@ -3,17 +3,17 @@ import React, { useState } from 'react'
 function Scorecard() {
   return (
     <div className="scorecard">
-      <div>
-        1<span>Played</span>
+      <div className="played">
+        0<span>Played</span>
       </div>
       <div>
-        1<span>Win%</span>
+        0<span>Win%</span>
       </div>
       <div>
-        1<span>Current Streak</span>
+        0<span>Current Streak</span>
       </div>
       <div>
-        1<span>Max Streak</span>
+        0<span>Max Streak</span>
       </div>
     </div>
   )
@@ -39,25 +39,24 @@ function GuessDistribution() {
     </div>
   )
 }
-export default function Statistics() {
-  let [open, setOpen] = useState(false)
+export default function Statistics({ setStatOpen }) {
   return (
     <>
-      { open&&
-        <div className="statistics">
-          <div className='toggle'><span>x</span></div>
-          <h2>STATISTICS</h2>
-          <Scorecard />
-          <GuessDistribution />
-          <div className="timeShare">
-            <div className="timer">
-              <h3>NEXT NUMBLE</h3>
-              <div>{/*time countdown*/}</div>
-            </div>
-            <div className="share">{/*share link */}</div>
-          </div>
+      <div className="statistics">
+        <div className="toggle">
+          <span onClick={() => setStatOpen(false)}>x</span>
         </div>
-      }
+        <h2>STATISTICS</h2>
+        <Scorecard />
+        <GuessDistribution />
+        <div className="timeShare">
+          <div className="timer">
+            <h3>NEXT NUMBLE</h3>
+            <div>{/*time countdown*/}</div>
+          </div>
+          <div className="share">{/*share link */}</div>
+        </div>
+      </div>
     </>
   )
 }

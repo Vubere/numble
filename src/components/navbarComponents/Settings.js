@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
-export default function Settings(){
-  const [open, setOpen] = useState(false)
+export default function Settings({setSettingOpen}){
   
   return(
     <>
-    {open&&
       <div className="settings-container">
         <div className="settings">
           <h2>SETTINGS</h2>
+          <span onClick={setSettingOpen}>x</span>
           <div>
             Hard Mode <span>Any revealed hints must be in subsequent guesses.</span>
           </div>
@@ -16,7 +15,6 @@ export default function Settings(){
           <div>feedback and questions</div>
         </div>
       </div>
-    }
     </>
   )
 }

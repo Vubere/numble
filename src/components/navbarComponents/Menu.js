@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 
 export default function Menu(){
-  const [open, setOpen] = useState(false)
 
   return(
     <>
-    {
-      open&&
       <div className="menu-container">
         <div className="menu">
           <h2>Games</h2>
@@ -18,7 +15,6 @@ export default function Menu(){
           </ul>
         </div>
       </div>
-    }
     </>
   )
 }

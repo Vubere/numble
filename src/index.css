@@ -34,10 +34,12 @@ header {
 
 header div{
   text-align: center;
+  cursor: pointer;
 }
 
 .heading{
   font-size: 1.8rem;
+  cursor: default;
 }
 /*main*/
 main{
@@ -79,6 +81,9 @@ main{
 }
 .white{
   border: 2px solid white;
+}
+.red{
+  border: 2px solid red;
 }
 .yellow{
   border: 2px solid yellow;
@@ -129,24 +134,48 @@ footer{
 /*statistics*/
 .statistics{
   width: 80%;
-  max-width: 600px;
+  max-width: 450px;
+  height: 250px;
   position: absolute;
-  top: 100px;
+  top: 74px;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
-  background-color: #111;
+  background-color: #111111;
   border-radius: 5px;
   z-index: 3;
+  display: grid;
+  grid-gap: 0;
+  place-items: center;
 }
 .toggle{
   display: flex;
+  width: 100%;
   justify-content: end;
   font-size: 1.3em;
   padding: 5px;
   padding-right: 10px;
 }
+.statistics h2{
+  font-size: 0.8em;
+  color: white;
+}
+.scorecard{
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  max-width: 300px;
+  grid-gap: 8px;
+}
+.scorecard div{
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8em;
+}
+.scorecard div>span{
+  font-size: 0.36em;
+}
+
 /*help*/
 .help-container{
   position: absolute;
