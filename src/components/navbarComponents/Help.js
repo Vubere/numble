@@ -7,15 +7,14 @@ export default function Help({setHelpOpen}) {
           <span onClick={setHelpOpen}>x</span>
           <p>Guess the number in six tries.</p>
           <p>
-            If your guess is lesser you get a red border. if it is greater you get
-            a yellow border.
+            If your guess is lesser you get a red border on the row. if it is greater you get
+            a white border.
           </p>
           <p>
             After each guess the color of the tile will change to show how close
             you are.
           </p>
           <ul>
-            <li>Transparent if the number is contained.</li>
             <li>Yellow if the digit is in the number but in the wrong spot</li>
             <li>Green if digit is in number and in the right spot</li>
           </ul>
