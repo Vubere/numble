@@ -10,7 +10,9 @@ export default function Menu(){
           <p>MORE FROM VICTOR UBERE</p>
           <ul>
             <li>
-              <a href="Vubere.github.io">Tetrix</a>
+              <div onClick={()=>{
+                window.location.assign("https://Vubere.github.io")
+              }}>Tetrix</div>
             </li>
           </ul>
         </div>
