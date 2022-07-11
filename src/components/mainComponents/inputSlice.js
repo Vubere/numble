@@ -182,7 +182,7 @@ const inputArraySlice = createSlice({
     },
     deleteBlockValue(state, action) {
       const {
-        payload: { row, column },
+        payload: { row },
       } = action
       if (state.currentColumn !== 0) {
         state.currentColumn--

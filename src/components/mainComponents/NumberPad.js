@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { numberClicked, removeNumber } from './numberSlice'
 import { updateBlockValue, deleteBlockValue, updateClasses, updateValidation,  } from './inputSlice'
-import { countColumnsRow, deleteColumn, goToNewRow,
-changeRowIsFull } from './features/columnRowCounterSlice'
+import { countColumnsRow, deleteColumn, goToNewRow} from './features/columnRowCounterSlice'
 import { updateStats } from './inputSlice'
 
 
@@ -10,9 +9,7 @@ export default function NumberPad() {
   const { generatedNumber, clickedNumberArray } = useSelector(
     (state) => state.numberFetch
   )
-  const {validate:{
-    isValueEqual
-  }} = useSelector((state) => state.inputArray)
+
   const dispatch = useDispatch()
   const colRow = useSelector((state) => state.columnRowCounter)
   const blocksAreFull = useSelector(

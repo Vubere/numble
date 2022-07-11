@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 function InputRow({ idNum }) {
   const inputArray = useSelector((state) => state.inputArray)
