@@ -8,8 +8,10 @@ import {setStatFromLS} from './components/mainComponents/inputSlice'
 export default function App() {
   const dispatch = useDispatch()
   useEffect(()=>{
-    const statistics = JSON.parse(localStorage.getItem('stats'))
-    dispatch(setStatFromLS(statistics))
+    if(localStorage.getItem('stats')){
+      const statistics = JSON.parse(localStorage.getItem('stats'))
+      dispatch(setStatFromLS(statistics))
+    }
   })
   return (
     <>

@@ -279,7 +279,7 @@ const inputArraySlice = createSlice({
     setStatFromLS(state, action) {
       state.statistics = action.payload
     },
-    reset(state){
+    resetInput(state){
       state.currentColumn = 0
       state.currentRow = 0
       state.validate = {}
@@ -307,6 +307,7 @@ const inputArraySlice = createSlice({
           5: 0,
         },
       }
+      localStorage.removeItem('stats')
     }
   },
 })

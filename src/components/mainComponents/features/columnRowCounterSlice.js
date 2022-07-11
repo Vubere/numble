@@ -38,13 +38,17 @@ const columnRowCounter = createSlice({
       state.rowIsFull = !state.rowIsFull
     },
     changeBlocksAreFull: (state) => {
-      state.blockAreFull = !state.blocksAreFull
+      state.blocksAreFull = !state.blocksAreFull
     },
     resetCol(state){
       state.currentRow = 0
       state.currentColumn = 0
-      state.blocksAreFull = !state.blocksAreFull
-      state.rowIsFull = !state.rowIsFull
+      if(state.blocksAreFull){
+        state.blocksAreFull = !state.blocksAreFull
+      }
+      if(state.rowIsFull){
+        state.rowIsFull = !state.rowIsFull
+      }
     }
   },
 })
