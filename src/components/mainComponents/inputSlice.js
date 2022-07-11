@@ -3,9 +3,24 @@ import { createSlice } from '@reduxjs/toolkit'
 const inputArraySlice = createSlice({
   name: 'inputArray',
   initialState: {
-    currentRow: 0,
     rowsValidated: {},
+    currentRow: 0,
+    currentColumn: 0,
     validate: {},
+    statistics: {
+      played: 0,
+      win: 0,
+      currentStreak: 0,
+      maxStreak: 0,
+      guessDistribution: {
+        0: 0,
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0,
+        5: 0,
+      },
+    },
     0: {
       value: {
         0: {
@@ -163,6 +178,16 @@ const inputArraySlice = createSlice({
         payload: { row, column, value },
       } = action
       state[row].value[column].value = value
+      state.currentColumn++
+    },
+    deleteBlockValue(state, action) {
+      const {
+        payload: { row, column },
+      } = action
+      if (state.currentColumn !== 0) {
+        state.currentColumn--
+      }
+      state[row].value[state.currentColumn].value = null
     },
     updateClasses(state) {
       const {
@@ -184,12 +209,12 @@ const inputArraySlice = createSlice({
       }
       if (similarIndexes.length > 0) {
         similarIndexes.forEach((val) => {
-          state[currentRow].value[val].classes = ['inputDiv green']
+          state[currentRow].value[val].classes = ['inputDiv bg-green']
         })
       }
       if (similarDigitsDIffIndex.length > 0) {
         similarDigitsDIffIndex.forEach((val) => {
-          state[currentRow].value[val].classes = ['inputDiv yellow']
+          state[currentRow].value[val].classes = ['inputDiv bg-yellow']
         })
       }
       state.rowsValidated[currentRow] = currentRow
@@ -199,6 +224,7 @@ const inputArraySlice = createSlice({
       } else {
         state.currentRow++
       }
+      state.currentColumn = 0
     },
     updateValidation(state, action) {
       const { generatedNumber, clickedNumberArray: inputArray } = action.payload
@@ -234,9 +260,65 @@ const inputArraySlice = createSlice({
         similarDigitsDIffIndex: similarDigits,
       }
     },
+    updateStats(state) {
+      if (state.validate.isValueEqual || state.currentRow === 5) {
+        state.statistics.played++
+        if (state.validate.isValueEqual) {
+          state.statistics.win++
+          state.statistics.currentStreak++
+          if (state.statistics.currentStreak > state.statistics.maxStreak) {
+            state.statistics.maxStreak = state.statistics.currentStreak
+          }
+          state.statistics.guessDistribution[state.currentRow]++
+        } else {
+          state.statistics.currentStreak = 0
+        }
+        localStorage.setItem('stats', JSON.stringify(state.statistics))
+      }
+    },
+    setStatFromLS(state, action) {
+      state.statistics = action.payload
+    },
+    reset(state){
+      state.currentColumn = 0
+      state.currentRow = 0
+      state.validate = {}
+      state.rowsValidated = {}
+      for(let i=0; i<6; i++){
+        state[i].classes = ['inputRow']
+        for(let j=0; j<5; j++){
+          state[i].value[j].value = null
+          state[i].value[j].classes = ['inputDiv']
+        }
+      }
+    },
+    resetStats(state){
+      state.statistics = {
+        played: 0,
+        win: 0,
+        currentStreak: 0,
+        maxStreak: 0,
+        guessDistribution: {
+          0: 0,
+          1: 0,
+          2: 0,
+          3: 0,
+          4: 0,
+          5: 0,
+        },
+      }
+    }
   },
 })
 
-export const { addBlock, updateBlockValue, updateClasses, updateValidation } =
-  inputArraySlice.actions
+export const {
+  updateBlockValue,
+  deleteBlockValue,
+  updateClasses,
+  updateValidation,
+  updateStats,
+  setStatFromLS,
+  resetInput,
+  resetStats
+} = inputArraySlice.actions
 export default inputArraySlice.reducer

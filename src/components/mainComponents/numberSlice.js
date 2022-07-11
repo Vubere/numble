@@ -6,8 +6,6 @@ export const numberSlice = createSlice({
   initialState: {
     clickedNumber: null,
     clickedNumberArray: [],
-    inputedNumber: 0,
-    validate: {},
     generatedNumber: randomFiveDigits(),
   },
   reducers: {
@@ -18,8 +16,18 @@ export const numberSlice = createSlice({
       }
       state.clickedNumberArray.push(action.payload)
     },
+    removeNumber(state) {
+      if (state.clickedNumberArray.length > 0) {
+        state.clickedNumberArray.pop()
+      }
+    },
+    resetNum(state) {
+      state.clickedNumber = null
+      state.clickedNumberArray = []
+      state.generatedNumber = randomFiveDigits()
+    },
   },
 })
 
-export const { numberClicked} = numberSlice.actions
+export const { numberClicked, removeNumber, resetNum } = numberSlice.actions
 export default numberSlice.reducer

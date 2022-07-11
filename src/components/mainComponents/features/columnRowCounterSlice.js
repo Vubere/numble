@@ -16,8 +16,17 @@ const columnRowCounter = createSlice({
         state.currentColumn++
       }
     },
-    goToNewRow(state){
-      if(state.currentRow===5){
+    deleteColumn(state) {
+      if (state.rowIsFull) {
+        state.rowIsFull = !state.rowIsFull
+        return state
+      }
+      if (state.currentColumn > 0) {
+        state.currentColumn--
+      }
+    },
+    goToNewRow(state) {
+      if (state.currentRow === 5) {
         state.blocksAreFull = !state.blocksAreFull
         return
       }
@@ -28,12 +37,24 @@ const columnRowCounter = createSlice({
     changeRowIsFull: (state) => {
       state.rowIsFull = !state.rowIsFull
     },
-    changeIblockAreFull: (state) => {
+    changeBlocksAreFull: (state) => {
       state.blockAreFull = !state.blocksAreFull
     },
+    resetCol(state){
+      state.currentRow = 0
+      state.currentColumn = 0
+      state.blocksAreFull = !state.blocksAreFull
+      state.rowIsFull = !state.rowIsFull
+    }
   },
 })
 
-export const { countColumnsRow, goToNewRow, changeRowIsFull, changeBlocksAreFull} =
-  columnRowCounter.actions
+export const {
+  countColumnsRow,
+  deleteColumn,
+  goToNewRow,
+  changeRowIsFull,
+  changeBlocksAreFull,
+  resetCol
+} = columnRowCounter.actions
 export default columnRowCounter.reducer
