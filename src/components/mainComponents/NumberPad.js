@@ -24,7 +24,6 @@ export default memo(function NumberPad() {
   const blocksAreFull = useSelector(
     (state) => state.columnRowCounter.blocksAreFull
   )
-  const {validate} = useSelector(state=>state.inputArray)
   const fetchNumber = (i) => () => {
     if (colRow.blocksAreFull) return
     if (colRow.rowIsFull) return
