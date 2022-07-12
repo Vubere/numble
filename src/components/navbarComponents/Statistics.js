@@ -3,7 +3,6 @@ import { resetCol } from '../mainComponents/features/columnRowCounterSlice'
 import { resetInput } from '../mainComponents/inputSlice'
 import { resetNum } from '../mainComponents/numberSlice'
 import { useDispatch } from 'react-redux'
-import { useMemo } from 'react'
 
 function Scorecard({ played, win, curStreak, maxStreak }) {
   let winPer = win > 0 ? Math.floor((win / played) * 100) : 0
@@ -62,9 +61,6 @@ function GuessDistribution({ win, guessDis }) {
 }
 export default function Statistics({ setStatOpen }) {
   const stats = useSelector((state) => state.inputArray.statistics)
-  const popUp = useMemo(()=>{
-    setStatOpen(true)
-  }, [stats.played])
   const dispatch = useDispatch()
   const reset = () => {
     dispatch(resetCol())
