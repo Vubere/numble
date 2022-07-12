@@ -11,7 +11,6 @@
     "react": "^17",
     "react-dom": "^17",
     "react-redux": "^7.2.4",
-    "react-router-dom": "^5.1.2",
     "react-scripts": "^4",
     "sass": "^1.53.0"
   },
@@ -38,8 +37,5 @@
   },
   "devDependencies": {
     "prettier": "^2.0.2"
-  },
-  "msw": {
-    "workerDirectory": "public"
   }
 }

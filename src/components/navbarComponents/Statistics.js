@@ -3,6 +3,7 @@ import { resetCol } from '../mainComponents/features/columnRowCounterSlice'
 import { resetInput } from '../mainComponents/inputSlice'
 import { resetNum } from '../mainComponents/numberSlice'
 import { useDispatch } from 'react-redux'
+import { useMemo } from 'react'
 
 function Scorecard({ played, win, curStreak, maxStreak }) {
   let winPer = win > 0 ? Math.floor((win / played) * 100) : 0
@@ -32,33 +33,40 @@ function GuessDistribution({ win, guessDis }) {
     <div className="guessDis">
       <h2>GUESS DISTRIBUTION</h2>
 
-     {win?<div className="stats">
-        <label htmlFor="range1">
-          1<meter id="range1" min="0" max={win} value={guessDis[0]}></meter>
-        </label>
-        <label htmlFor="range2">
-          2<meter id="range2" min="0" max={win} value={guessDis[1]}></meter>
-        </label>
-        <label htmlFor="range3">
-          3<meter id="range3" min="0" max={win} value={guessDis[2]}></meter>
-        </label>
-        <label htmlFor="range4">
-          4<meter id="range4" min="0" max={win} value={guessDis[3]}></meter>
-        </label>
-        <label htmlFor="range5">
-          5<meter id="range5" min="0" max={win} value={guessDis[4]}></meter>
-        </label>
-        <label htmlFor="range6">
-          6<meter id="range6" min="0" max={win} value={guessDis[5]}></meter>
-        </label>
-      </div>:'No data'}
+      {win ? (
+        <div className="stats">
+          <label htmlFor="range1">
+            1<meter id="range1" min="0" max={win} value={guessDis[0]}></meter>
+          </label>
+          <label htmlFor="range2">
+            2<meter id="range2" min="0" max={win} value={guessDis[1]}></meter>
+          </label>
+          <label htmlFor="range3">
+            3<meter id="range3" min="0" max={win} value={guessDis[2]}></meter>
+          </label>
+          <label htmlFor="range4">
+            4<meter id="range4" min="0" max={win} value={guessDis[3]}></meter>
+          </label>
+          <label htmlFor="range5">
+            5<meter id="range5" min="0" max={win} value={guessDis[4]}></meter>
+          </label>
+          <label htmlFor="range6">
+            6<meter id="range6" min="0" max={win} value={guessDis[5]}></meter>
+          </label>
+        </div>
+      ) : (
+        'No data'
+      )}
     </div>
   )
 }
 export default function Statistics({ setStatOpen }) {
   const stats = useSelector((state) => state.inputArray.statistics)
+  const popUp = useMemo(()=>{
+    setStatOpen(true)
+  }, [stats.played])
   const dispatch = useDispatch()
-  const reset = ()=>{
+  const reset = () => {
     dispatch(resetCol())
     dispatch(resetInput())
     dispatch(resetNum())
@@ -67,7 +75,10 @@ export default function Statistics({ setStatOpen }) {
     <>
       <div className="statistics">
         <div className="toggle">
-          <span onClick={() => setStatOpen(false)}>x</span>
+          <i
+            className="i cancel statIcon"
+            onClick={() => setStatOpen(false)}
+          ></i>
         </div>
         <h2>STATISTICS</h2>
         <Scorecard
@@ -77,13 +88,17 @@ export default function Statistics({ setStatOpen }) {
           maxStreak={stats.maxStreak}
         />
         <GuessDistribution win={stats.win} guessDis={stats.guessDistribution} />
-        <div className="timeShare">
-          <div className="timer">
-            <h3>Another NUMBLE</h3>
-            <div className='now'
-            onClick={reset}>Now</div>
+        <div className="anotherRound">
+          <h3>Another NUMBLE</h3>
+          <div
+            className="now link"
+            onClick={() => {
+              setStatOpen(false)
+              reset()
+            }}
+          >
+            Go
           </div>
-          <div className="share">{/*share link */}</div>
         </div>
       </div>
     </>

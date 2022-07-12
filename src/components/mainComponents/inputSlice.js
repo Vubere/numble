@@ -209,12 +209,12 @@ const inputArraySlice = createSlice({
       }
       if (similarIndexes.length > 0) {
         similarIndexes.forEach((val) => {
-          state[currentRow].value[val].classes = ['inputDiv bg-green']
+          state[currentRow].value[val].classes = ['inputDiv bgGreen']
         })
       }
       if (similarDigitsDIffIndex.length > 0) {
         similarDigitsDIffIndex.forEach((val) => {
-          state[currentRow].value[val].classes = ['inputDiv bg-yellow']
+          state[currentRow].value[val].classes = ['inputDiv bgYellow']
         })
       }
       state.rowsValidated[currentRow] = currentRow
