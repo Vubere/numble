@@ -202,9 +202,9 @@ main {
   grid-template-rows: 15.5% 15.5% 15.5% 15.5% 15.5% 15.5%;
 }
 .inputRow {
-  width: 100%;
+  width: 95%;
   display: grid;
-  grid-template-columns: 19% 19% 19% 19% 19%;
+  grid-template-columns: 20% 20% 20% 20% 20%;
   gap: 3px;
 }
 .inputDiv {
