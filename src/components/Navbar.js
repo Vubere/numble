@@ -1,64 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Statistics from './navbarComponents/Statistics'
 import Help from './navbarComponents/Help'
 import Settings from './navbarComponents/Settings'
 import Menu from './navbarComponents/Menu'
 
-export default function Navbar({statsOpen, setStatOpen}) {
-  const [helpOpen, setHelpOpen] = useState(false)
-  const [settingsOpen, setSettingsOpen] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  if (menuOpen) {
-    if (helpOpen) {
-      setHelpOpen(false)
-    }
-    if (statsOpen) {
-      setStatOpen(false)
-    }
-    if (settingsOpen) {
-      setSettingsOpen(false)
-    }
-  } else if (helpOpen) {
-    if (menuOpen) {
-      setMenuOpen(false)
-    }
-    if (statsOpen) {
-      setStatOpen(false)
-    }
-    if (settingsOpen) {
-      setSettingsOpen(false)
-    }
-  } else if (statsOpen) {
-    if (helpOpen) {
-      setHelpOpen(false)
-    }
-    if (menuOpen) {
-      setMenuOpen(false)
-    }
-    if (settingsOpen) {
-      setSettingsOpen(false)
-    }
-  } else if (settingsOpen) {
-    if (helpOpen) {
-      setHelpOpen(false)
-    }
-    if (statsOpen) {
-      setStatOpen(false)
-    }
-    if (menuOpen) {
-      setMenuOpen(false)
-    }
-  } 
+export default function Navbar({openStates}) {
   return (
     <header>
       <nav className="left">
         <div>
-          <i className="i menuIcon" onClick={() => setMenuOpen(!menuOpen)}></i>
-          {menuOpen && <Menu setMenuOpen={setMenuOpen} />}
+          <i className="i menuIcon" onClick={() => openStates.setMenuOpen(!openStates.menuOpen)}></i>
+          {openStates.menuOpen && <Menu setMenuOpen={openStates.setMenuOpen} />}
         </div>
         <div>
-          <i className="i helpIcon" onClick={() => setHelpOpen(!helpOpen)}></i>
-          {helpOpen && <Help setHelpOpen={setHelpOpen} />}
+          <i className="i helpIcon" onClick={() => openStates.setHelpOpen(!openStates.helpOpen)}></i>
+          {openStates.helpOpen && <Help setHelpOpen={openStates.setHelpOpen} />}
         </div>
       </nav>
       <div className="i heading" role="heading" aria-level="1">
@@ -66,15 +22,15 @@ export default function Navbar({statsOpen, setStatOpen}) {
       </div>
       <nav className="right">
         <div>
-          <i className="i stat" onClick={() => setStatOpen(!statsOpen)}></i>{' '}
-          {statsOpen && <Statistics setStatOpen={setStatOpen} />}
+          <i className="i stat" onClick={() => openStates.setStatOpen(!openStates.statsOpen)}></i>{' '}
+          {openStates.statsOpen && <Statistics setStatOpen={openStates.setStatOpen} />}
         </div>
         <div>
           <i
             className="i setting"
-            onClick={() => setSettingsOpen(!settingsOpen)}
+            onClick={() => openStates.setSettingsOpen(!openStates.settingsOpen)}
           ></i>
-          {settingsOpen && <Settings setSettingsOpen={setSettingsOpen} />}
+          {openStates.settingsOpen && <Settings setSettingsOpen={openStates.setSettingsOpen} />}
         </div>
       </nav>
     </header>
