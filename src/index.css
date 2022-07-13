@@ -187,7 +187,6 @@ main {
   place-items: center;
   grid-template-rows: 65% 35%;
   gap: 4px;
-  margin-bottom: 20px;
 }
 /* input area */
 .inputArea {
@@ -264,5 +263,9 @@ button:hover {
 @media screen(max-width:600px){
   body{
     height:95vh;
+  }
+  .buttonContainer{
+    position: fixed;
+    bottom: 2vh;
   }
 }
