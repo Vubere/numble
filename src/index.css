@@ -13,7 +13,6 @@ html{
 body {
   background-color: #000f;
   height: 100vh;
-  display: grid;
   padding-bottom: 5vh;
 }
 i{
