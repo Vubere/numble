@@ -182,7 +182,7 @@ header {
 /* main */
 main {
   width: 100%;
-  height: calc(100vh - 40px);
+  height: calc(100% - 40px);
   display: grid;
   place-items: center;
   grid-template-rows: 65% 35%;
