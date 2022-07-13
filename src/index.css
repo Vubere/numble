@@ -10,7 +10,7 @@
 body {
   background-color: #000f;
   height: 100vh;
-  overflow: initial;
+  overflow: auto;
   padding-bottom: 5vh;
 }
 i{
