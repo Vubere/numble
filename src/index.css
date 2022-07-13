@@ -244,7 +244,6 @@ footer {
   display: grid;
   width: 100%;
   height: 100%;
-  margin-bottom: 4vh;
   gap: 4px;
   grid-template-columns: 19% 19% 19% 19% 19%;
   grid-template-rows: 31% 31% 31%;
@@ -261,4 +260,9 @@ button:hover {
 .delIcon {
   background-image: url('././icons/delete.png');
   width: 40px;
+}
+@media screen(max-width:600px){
+  body{
+    height:95vh;
+  }
 }
