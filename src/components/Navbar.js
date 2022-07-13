@@ -18,7 +18,7 @@ export default function Navbar({openStates}) {
         </div>
       </nav>
       <div className="i heading" role="heading" aria-level="1">
-        Numble
+        Numbe
       </div>
       <nav className="right">
         <div>
