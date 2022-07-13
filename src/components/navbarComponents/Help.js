@@ -7,11 +7,11 @@ export default function Help({ setHelpOpen }) {
           <i className="i cancel" onClick={() => setHelpOpen(false)}></i>
           <p>Guess the number in six tries.</p>
           <p>
-            If your guess is lesser you get a red border on the row. if it is
-            greater you get a white border.
+            If your guess is lesser you get a white border on the row. if it is
+            greater you get a red border.
           </p>
           <p>
-            After each guess the color of the tile will change to show how close
+            After each guess the color of each tile on the row will change to show how close
             you are.
           </p>
           <p>Yellow if the digit is in the number but in the wrong spot</p>
