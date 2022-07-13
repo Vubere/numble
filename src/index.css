@@ -184,7 +184,7 @@ main {
   width: 100%;
   height: calc(100vh - 40px);
   display: grid;
-  justify-content: center;
+  place-items: center;
   grid-template-rows: 65% 35%;
   gap: 4px;
 }
