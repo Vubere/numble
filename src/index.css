@@ -202,9 +202,9 @@ main {
   grid-template-rows: 15.5% 15.5% 15.5% 15.5% 15.5% 15.5%;
 }
 .inputRow {
-  width: 95%;
+  width: 97%;
   display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-columns: 19% 19% 19% 19% 19%;
   gap: 3px;
 }
 .inputDiv {
@@ -214,12 +214,17 @@ main {
 }
 .green{
   border: 1px solid green;
+  border-right: 0;
 }
 .white{
   border: 1px solid white;
+  border-right: 0;
+  border-top: 0;
 }
 .red{
   border: 1px solid red;
+  border-right: 0;
+  border-bottom: 0;
 }
 .bgGreen{
   background-color: rgba(0, 128, 0, 0.623);
