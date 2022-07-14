@@ -5,7 +5,10 @@ export default function Help({ setHelpOpen }) {
         <div className="help">
           <h2>HOW TO PLAY</h2>
           <i className="i cancel" onClick={() => setHelpOpen(false)}></i>
-          <p>Guess the number in six tries.</p>
+          <p>
+            Guess the number in six tries.
+            You are to try guess a number up of five unique digits. 
+          </p>
           <p>
             If your guess is lesser you get a white border on the row. if it is
             greater you get a red border.
