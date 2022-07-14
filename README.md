@@ -1,4 +1,4 @@
-Numble
+Numle
 
 Wordle but numbers.
 
