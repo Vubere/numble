@@ -84,6 +84,7 @@ header {
 }
 .link{
   color: blue;
+  cursor: pointer;
 }
 .helpIcon {
   background-image: url('././icons/help.png');
