@@ -11,7 +11,7 @@ export default function Menu({setMenuOpen}){
           <ul>
             <li>
              <div onClick={()=>{
-                window.location.assign("https://Vubere.github.io")
+                window.location.assign("https://vutetrix.netlify.app/")
               }} className='link'> <i className="i tetrisIcon"></i>Tetrix</div>
             </li>
           </ul>
